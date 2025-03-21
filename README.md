@@ -12,15 +12,16 @@ HeroApp – iOS-приложение для просмотра супергер�
 
 ### 2. Структура
 HeroError.swift – обработка ошибок
-swift
+```swift
 enum HeroError: Error {
     case wrongUrl, somethingWentWrong
 }
+```
 
 
 *Router*
 HeroRouter.swift – отвечает за навигацию
-swift
+```swift
 final class HeroRouter {
     var rootViewController: UINavigationController?
 
@@ -30,11 +31,12 @@ final class HeroRouter {
         rootViewController?.pushViewController(detailVC, animated: true)
     }
 }
+```
 
 
 *Service*
 HeroService.swift – загрузка данных
-swift
+```swift
 protocol HeroService {
     func fetchHeroes() async throws -> [HeroEntity]
     func fetchHeroById(id: Int) async throws -> HeroEntity
@@ -53,11 +55,12 @@ struct HeroServiceImpl: HeroService {
         return try JSONDecoder().decode(HeroEntity.self, from: data)
     }
 }
-
+```
 
 *Utils*
 Constants.swift – базовый URL API
-swift
+```swift
 enum Constants {
     static let baseUrl = "https://akabab.github.io/superhero-api/api/"
 }
+```
